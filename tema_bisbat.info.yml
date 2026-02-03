@@ -7,7 +7,7 @@ core_version_requirement: ^9 || ^11
 base theme: stable9
 
 libraries:
-  - mi_tema/global-styling
+  - tema_bisbat/global-styling
 
 regions:
   header: Header
