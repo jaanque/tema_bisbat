@@ -1,0 +1,18 @@
+name: Tema Bisbat
+type: theme
+description: 'Tema bisbat lleida / ZBI LLEIDA'
+package: Custom
+core_version_requirement: ^9 || ^11
+
+base theme: stable9
+
+libraries:
+  - mi_tema/global-styling
+
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer: Footer
