@@ -1,17 +1,38 @@
-/*!
- * Tema Bisbat / ZBI LLEIDA
- * By Jan Queralt
- */
+/*
+* CSS personalitzat pel tema Bisbat
+* Autor: ZBI LLEIDA / Jan Queralt
+* Data: 02/26
+*/
 
-/* Global Reset & Base Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #333;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
 }
 
-/* Utilities */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 .visually-hidden {
   position: absolute !important;
   height: 1px;
@@ -21,78 +42,210 @@ body {
   white-space: nowrap;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-/* Layout Container */
 .layout-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* Header & Branding */
-header {
-  padding: 20px 0;
   background-color: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  min-height: 100vh;
+  position: relative;
 }
 
-/* Branding Block - Flex Container */
-#block-bisbat-branding {
+.region-header,
+header > div {
+  display: grid;
+  grid-template-areas: 
+    "branding search"
+    "nav nav";
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding-top: 25px;
+  width: 100%;
+}
+
+.region-header .block,
+header > div > div,
+header > div > nav {
+  position: relative;
+}
+
+#block-bisbat-branding,
+.block-system-branding-block {
+  grid-area: branding;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 20px;
-  margin-bottom: 20px;
+  padding: 0 20px 20px 20px;
 }
 
-/* Logo Image */
-#block-bisbat-branding img {
-  width: 100px; /* Estimated size from reference */
-  height: auto;
+#block-bisbat-branding img,
+.block-system-branding-block img {
+  height: 85px !important;
+  width: auto !important;
+  max-width: 100%;
   display: block;
 }
 
-/* Branding Text: "Bisbat de Lleida" */
-#block-bisbat-branding > a:last-child {
-  display: block;
-  font-size: 2.5rem; /* Large font size */
-  font-weight: normal;
-  color: #000;
-  text-decoration: none;
+#block-bisbat-branding > a:not(:has(img)),
+.block-system-branding-block > a:not(:has(img)) {
+  font-family: 'Merriweather', serif;
+  font-size: 2.4rem;
+  color: #222;
   line-height: 1.1;
-  width: min-content; /* Forces wrapping: Bisbat / de / Lleida */
-  white-space: normal;
-  text-transform: none; /* Ensure no uppercase override */
+  font-weight: 700;
+  text-decoration: none;
 }
 
-/* Navigation - Basic Cleanup */
-#block-bisbat-main-navigation {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+#block-bisbat-branding > a:last-child {
+  font-family: 'Merriweather', serif;
+  font-size: 2.4rem;
+  color: #222;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+#block-bisbat-search-form,
+.block-search {
+  grid-area: search;
+  justify-self: end;
+  padding: 0 20px 20px 0;
+}
+
+.search-block-form form {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.search-block-form input[type="search"] {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+.search-block-form input[type="submit"] {
+  background-color: #006b8f; 
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.search-block-form input[type="submit"]:hover {
+  background-color: #005572;
+}
+
+#block-bisbat-main-navigation,
+.block-system-menu-blockmain {
+  grid-area: nav;
+  background-color: #006b8f;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  border-top: 4px solid #005572;
+  position: relative;
+  z-index: 5;
 }
 
 #block-bisbat-main-navigation ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+#block-bisbat-main-navigation li {
+  position: relative;
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+#block-bisbat-main-navigation li:first-child {
+  border-left: 1px solid rgba(255,255,255,0.2);
 }
 
 #block-bisbat-main-navigation a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+  display: block;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 16px 22px;
+  letter-spacing: 0.5px;
 }
 
 #block-bisbat-main-navigation a:hover {
-  text-decoration: underline;
+  background-color: rgba(0,0,0,0.15);
 }
 
-/* Search Form - Basic positioning */
-.search-block-form {
-  margin-top: 10px;
+#block-bisbat-main-navigation li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #005572;
+  min-width: 200px;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+}
+
+#block-bisbat-main-navigation li:hover > ul {
+  display: block;
+}
+
+#block-bisbat-main-navigation li ul li {
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  width: 100%;
+}
+
+#block-bisbat-main-navigation li ul a {
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  text-transform: none;
+}
+
+.contextual {
+  z-index: 500;
+}
+.contextual button {
+    opacity: 0.5;
+}
+
+.layout-content {
+  padding: 40px 20px;
+}
+
+h1, h2, h3 {
+  font-family: 'Merriweather', serif;
+  color: #222;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer a {
+  color: #ddd;
+  text-decoration: underline;
 }
